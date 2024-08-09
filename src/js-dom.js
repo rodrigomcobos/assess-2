@@ -23,12 +23,18 @@ authButton.addEventListener('click', () => {
 // A user should be able to enter what they want the alert to say in the
 // text box. Then, they can submit the form to trigger the alert.
 
-/// TODO: replace this with your code
+const sendAlertForm = document.querySelector('#send-alert');
+
+sendAlertForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const alertMessage = document.querySelector('#alert-message').value;
+  alert(alertMessage);
+});
 
 // Add an item
 //
 // This is a pretty silly feature -- when a user clicks on the
-// button (the one that says "Double-ulick to add an item"), a new list
+// button (the one that says "Double-click to add an item"), a new list
 // item should appear.
 //
 // In other words, whenever a user clicks on the button, just
@@ -40,7 +46,14 @@ authButton.addEventListener('click', () => {
 //     <li>Item</li>  <!-- This was added after double-clicking -->
 //   </ol>
 
-/// TODO: replace this with your code
+const itemAdder = document.querySelector('#item-adder');
+const list = document.querySelector('#list');
+
+itemAdder.addEventListener('dblclick', () => {
+  const listItem = document.createElement('li');
+  listItem.textContent = 'Item';
+  list.appendChild(listItem);
+});
 
 // Change colors
 //
@@ -51,9 +64,34 @@ authButton.addEventListener('click', () => {
 // Clicking on "Turn Stuff Red" should make text red and clicking on "Turn
 // Stuff Blue" should make text blue.
 
-/// TODO: replace this with your code
+const blueButton = document.querySelector('#blue');
+const redButton = document.querySelector('#red');
+const colorChanger = document.querySelector('#color-changer');
+const changeColorEls = document.querySelectorAll('.changes-colors');
 
 // Calculate factorial
+
+blueButton.addEventListener('click', () => {
+  changeColorEls.forEach((el) => {
+    if (
+      el.textContent !== "This sentence doesn't change colors except" &&
+      el.textContent !== "But this item doesn't change colors"
+    ) {
+      el.style.color = 'blue';
+    }
+  });
+});
+
+redButton.addEventListener('click', () => {
+  changeColorEls.forEach((el) => {
+    if (
+      el.textContent !== "This sentence doesn't change colors except" &&
+      el.textContent !== "But this item doesn't change colors"
+    ) {
+      el.style.color = 'red';
+    }
+  });
+});
 //
 // The factorial of a number is the product of an integer and all the integers
 // below it. For example, the factorial of 4 is equal to 4 * 3 * 2 * 1 = 24. The
@@ -68,7 +106,24 @@ authButton.addEventListener('click', () => {
 //   - calls your function that calculates a factorial
 //   - puts the result of the function inside the "result" span
 
-/// TODO: replace this with your code
+const factorialForm = document.querySelector('#factorial-calculator');
+const result = document.querySelector('#result');
+
+factorialForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const input = factorialForm.querySelector('#factorial-input');
+  const num = parseInt(input.value);
+  const factorial = factorialOf(num);
+  result.textContent = factorial;
+});
+
+function factorialOf(num) {
+  let total = 1;
+  for (let i = 1; i <= num; i++) {
+    total *= i;
+  }
+  return total;
+}
 
 // Validate a form
 //
@@ -85,4 +140,18 @@ authButton.addEventListener('click', () => {
 // the feedback text to say "The word must be at least 4 characters long." and
 // change the color of the text to red..
 
-/// TODO: replace this with your code
+const form = document.querySelector('#recommend-word');
+const feedback = document.querySelector('.form-feedback');
+const word = document.querySelector('#word');
+const submit = document.querySelector('#submit');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (word.value.length < 4) {
+    feedback.textContent = 'The word must be at least 4 characters long.';
+    feedback.style.color = 'red';
+  } else {
+    feedback.textContent = 'Thanks for your submission!';
+    feedback.style.color = 'green';
+  }
+});
