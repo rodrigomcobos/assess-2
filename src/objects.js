@@ -13,7 +13,14 @@
 //     { firstName: 'Karlach', lastName: 'Cliffgate', location: 'Avernus' }
 //   ]);
 //   => ['Gale Dekarios', 'Wyll Ravengard', 'Karlach Cliffgate'];
-function getNames(people) {}
+
+const getNames = (people) => {
+  //setting a function that takes in an array of people
+  return people.map((person) => {
+    //mapping over each person
+    return `${person.firstName} ${person.lastName}`; //returning the full name
+  });
+};
 
 // Given an object representing a person, return their full name (first name and last name).
 // You MUST use object destructuring in your solution.
@@ -24,7 +31,11 @@ function getNames(people) {}
 // Ex.:
 //   getName({ firstName: 'Gale', lastName: 'Dekarios', location: 'Waterdeep' });
 //   => 'Gale Dekarios'
-function getNameUsingDestructuring(person) {}
+
+const getNameUsingDestructuring = ({ firstName, lastName }) => {
+  //setting a function that takes in an object with first and last name
+  return `${firstName} ${lastName}`; //returning the full name
+};
 
 // Given an array of objects representing people, return a new array of the
 // people matching the given location.
@@ -43,7 +54,11 @@ function getNameUsingDestructuring(person) {}
 //     { firstName: 'Wyll', lastName: 'Ravengard', location: "Baldur's Gate" },
 //     { firstName: 'Astarion', lastName: 'Ancunin', location: "Baldur's Gate" }
 //   ];
-function getPeopleByLocation(people, location) {}
+
+const getPeopleByLocation = (people, location) => {
+  //setting a function that takes in an array of people and location
+  return people.filter((person) => person.location === location); //returning the people in the given location
+};
 
 // Translate a phrase to pirate talk.
 //
@@ -72,7 +87,13 @@ const EN_PIRATE_LOOKUP = {
   hello: 'ahoy',
 };
 
-function translateToPirateTalk(phrase) {}
+const translateToPirateTalk = (phrase) => {
+  //setting a function that takes in a phrase
+  return phrase
+    .split(' ') //splitting the phrase into an array of words
+    .map((word) => EN_PIRATE_LOOKUP[word] || word) //mapping over each word in the array
+    .join(' '); //joining the words back into a phrase
+};
 
 // Return the number of occurrences of each word in a string.
 // This function doesn't handle punctuation and is case-sensitive, so you can
@@ -81,7 +102,16 @@ function translateToPirateTalk(phrase) {}
 // Ex.:
 //   wordCount('hello world')
 //   => { hello: 1, world: 1 }
-function wordCount(str) {}
+
+const wordCount = (str) => {
+  //setting a function that takes in a string
+  const words = str.split(' '); //splitting the string into an array of words
+  return words.reduce((acc, word) => {
+    //reducing the array into an object
+    acc[word] = (acc[word] || 0) + 1; //if the word is in the object, increment the count, otherwise set the count to 1
+    return acc; //returning the object
+  }, {}); //setting the object which is currently an empty object
+};
 
 // Given an object representing a bug, return true if the given bug is
 // available in the given month.
@@ -103,7 +133,11 @@ function wordCount(str) {}
 //     }
 //   }, 1);
 //   => true
-function isBugAvailable(bug, month) {}
+
+const isBugAvailable = (bug, month) => {
+  //setting a function that takes in an object representing a bug and a month
+  return bug.availability.months.includes(month); //returning true if the bug is available in the given month
+};
 
 // Given an array of objects representing bugs, return an object that'll be
 // used to build a calendar. The keys of the object should be the months of the
