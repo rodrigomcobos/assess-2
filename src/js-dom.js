@@ -8,12 +8,13 @@
 // update and say "Log out". If a user clicks on the button again, its text
 // should switch from "Log Out" to "Log In".
 
-const authButton = document.querySelector('#auth');
-const authText = authButton.textContent;
+const authButton = document.querySelector('#auth'); // grabbing the button
+const authText = authButton.textContent; // grabbing its text
 
 authButton.addEventListener('click', () => {
-  authButton.textContent =
-    authButton.textContent === 'Log In' ? 'Log Out' : 'Log In';
+  // adding an event listener
+  authButton.textContent = // changing the text inside the button
+    authButton.textContent === 'Log In' ? 'Log Out' : 'Log In'; // ternary operator to check if the text is 'Log In' or 'Log Out' and change accordingly
 });
 
 // Send an alert
@@ -23,12 +24,13 @@ authButton.addEventListener('click', () => {
 // A user should be able to enter what they want the alert to say in the
 // text box. Then, they can submit the form to trigger the alert.
 
-const sendAlertForm = document.querySelector('#send-alert');
+const sendAlertForm = document.querySelector('#send-alert'); // grabbing the form
 
 sendAlertForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const alertMessage = document.querySelector('#alert-message').value;
-  alert(alertMessage);
+  // adding an event listener
+  event.preventDefault(); // preventing the form from submitting by default
+  const alertMessage = document.querySelector('#alert-message').value; // grabbing the value of the text box
+  alert(alertMessage); // calling the alert function
 });
 
 // Add an item
@@ -46,13 +48,14 @@ sendAlertForm.addEventListener('submit', (event) => {
 //     <li>Item</li>  <!-- This was added after double-clicking -->
 //   </ol>
 
-const itemAdder = document.querySelector('#item-adder');
-const list = document.querySelector('#list');
+const itemAdder = document.querySelector('#item-adder'); // grabbing the button
+const list = document.querySelector('#list'); // grabbing the list
 
 itemAdder.addEventListener('dblclick', () => {
-  const listItem = document.createElement('li');
-  listItem.textContent = 'Item';
-  list.appendChild(listItem);
+  // adding an event listener for the double click
+  const listItem = document.createElement('li'); // creating a new list item
+  listItem.textContent = 'Item'; // adding the text 'Item' to the list item
+  list.appendChild(listItem); // appending the list item to the list
 });
 
 // Change colors
@@ -64,31 +67,35 @@ itemAdder.addEventListener('dblclick', () => {
 // Clicking on "Turn Stuff Red" should make text red and clicking on "Turn
 // Stuff Blue" should make text blue.
 
-const blueButton = document.querySelector('#blue');
-const redButton = document.querySelector('#red');
-const colorChanger = document.querySelector('#color-changer');
-const changeColorEls = document.querySelectorAll('.changes-colors');
+const blueButton = document.querySelector('#blue'); // grabbing the button blue
+const redButton = document.querySelector('#red'); // grabbing the button red
+const colorChanger = document.querySelector('#color-changer'); // grabbing the container
+const changeColorEls = document.querySelectorAll('.changes-colors'); // grabbing all the elements with the class 'changes-colors'
 
 // Calculate factorial
 
 blueButton.addEventListener('click', () => {
+  // adding an event listener for click
   changeColorEls.forEach((el) => {
+    // looping through the elements
     if (
-      el.textContent !== "This sentence doesn't change colors except" &&
-      el.textContent !== "But this item doesn't change colors"
+      el.textContent !== "This sentence doesn't change colors except" && // checking if the text is not 'This sentence doesn't change colors except' and 'But this item doesn't change colors'
+      el.textContent !== "But this item doesn't change colors" // checking if the text is not 'But this item doesn't change colors'
     ) {
-      el.style.color = 'blue';
+      el.style.color = 'blue'; // changing the color to blue
     }
   });
 });
 
 redButton.addEventListener('click', () => {
+  // adding an event listener for click
   changeColorEls.forEach((el) => {
+    // looping through the elements
     if (
-      el.textContent !== "This sentence doesn't change colors except" &&
-      el.textContent !== "But this item doesn't change colors"
+      el.textContent !== "This sentence doesn't change colors except" && // checking if the text is not 'This sentence doesn't change colors except' and 'But this item doesn't change colors'
+      el.textContent !== "But this item doesn't change colors" // checking if the text is not 'But this item doesn't change colors'
     ) {
-      el.style.color = 'red';
+      el.style.color = 'red'; // changing the color to red
     }
   });
 });
@@ -106,24 +113,27 @@ redButton.addEventListener('click', () => {
 //   - calls your function that calculates a factorial
 //   - puts the result of the function inside the "result" span
 
-const factorialForm = document.querySelector('#factorial-calculator');
-const result = document.querySelector('#result');
+const factorialForm = document.querySelector('#factorial-calculator'); // grabbing the form
+const result = document.querySelector('#result'); // grabbing the span
 
 factorialForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const input = factorialForm.querySelector('#factorial-input');
-  const num = parseInt(input.value);
-  const factorial = factorialOf(num);
-  result.textContent = factorial;
+  // adding an event listener for submit with event as the parameter
+  event.preventDefault(); // preventing the form from submitting by default
+  const input = factorialForm.querySelector('#factorial-input'); // grabbing the input
+  const num = parseInt(input.value); // getting the value of the input
+  const factorial = factorialOf(num); //  calling the function
+  result.textContent = factorial; // putting the result in the span
 });
 
-function factorialOf(num) {
-  let total = 1;
+const factorialOf = (num) => {
+  // defining the function with num as the parameter
+  let total = 1; // setting total to 1
   for (let i = 1; i <= num; i++) {
-    total *= i;
+    // looping from 1 to num
+    total *= i; // multiplying total by i
   }
-  return total;
-}
+  return total; // returning total
+};
 
 // Validate a form
 //
@@ -140,18 +150,20 @@ function factorialOf(num) {
 // the feedback text to say "The word must be at least 4 characters long." and
 // change the color of the text to red..
 
-const form = document.querySelector('#recommend-word');
-const feedback = document.querySelector('.form-feedback');
-const word = document.querySelector('#word');
-const submit = document.querySelector('#submit');
+const form = document.querySelector('#recommend-word'); // grabbing the form
+const feedback = document.querySelector('.form-feedback'); // grabbing the span
+const word = document.querySelector('#word'); // grabbing the textarea
+const submit = document.querySelector('#submit'); // grabbing the button
 
 form.addEventListener('submit', (event) => {
-  event.preventDefault();
+  // adding an event listener for submit with event as the parameter
+  event.preventDefault(); // preventing the form from submitting by default
   if (word.value.length < 4) {
-    feedback.textContent = 'The word must be at least 4 characters long.';
-    feedback.style.color = 'red';
+    // checking if the length of the text is less than 4
+    feedback.textContent = 'The word must be at least 4 characters long.'; // changing the feedback text to say "The word must be at least 4 characters long."
+    feedback.style.color = 'red'; // changing the color of the text to red
   } else {
-    feedback.textContent = 'Thanks for your submission!';
-    feedback.style.color = 'green';
+    feedback.textContent = 'Thanks for your submission!'; // changing the feedback text to say "Thanks for your submission!"
+    feedback.style.color = 'green'; // changing the color of the text to green
   }
 });
