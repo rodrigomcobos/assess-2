@@ -136,7 +136,7 @@ const wordCount = (str) => {
 
 const isBugAvailable = (bug, month) => {
   //setting a function that takes in an object representing a bug and a month
-  return bug.availability.months.includes(month); //returning true if the bug is available in the given month
+  return bug.availability.months.includes(month); //returning true if the bug is available in the given month, using dot notation to access nested objects
 };
 
 // Given an array of objects representing bugs, return an object that'll be
@@ -180,7 +180,18 @@ const isBugAvailable = (bug, month) => {
 //     12: [],
 //   }
 
-function buildBugHuntCalendar(bugs) {}
+const buildBugHuntCalendar = (bugs) => {
+  //setting a function that takes in an array of objects representing bugs
+  const months = new Set(); //creating a set
+  bugs.forEach((bug) => {
+    //iterating over the array of bugs
+    bug.availability.months.forEach((month) => {
+      //iterating over the months of the bug
+      months.add(month); //adding the months to the set
+    });
+  });
+  return Object.fromEntries(months); //returning the object with the months as the keys and the names of the bugs as the values
+};
 
 export {
   buildBugHuntCalendar,
