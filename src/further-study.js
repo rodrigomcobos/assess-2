@@ -31,6 +31,40 @@
 // Ex.:
 //   buildWordChain(['zoo', 'sour', 'racket', 'octos']);
 //   => ['zoo', 'octos', 'sour', 'racket']
-function buildWordChain(words) {}
+
+const buildWordChain = (words) => {
+  //setting up function with words parameter
+  const wordChain = []; //creating an empty array
+  let word; //creating a variable to hold the word
+
+  for (let i = 0; i < words.length; i++) {
+    //looping over the words
+    if (wordChain.length === 0) {
+      //checking if the word chain is empty
+      wordChain.push(words[i]); //adding the first word to the word chain
+      word = words[i]; //setting the current word to the first word
+      continue;
+    }
+
+    for (let j = 0; j < words.length; j++) {
+      //looping over the words
+      if (
+        words[j].startsWith(word.slice(-1)) && //checking if the next word starts with the last letter of the current word
+        !wordChain.includes(words[j]) //checking if the next word is already in the word chain
+      ) {
+        word = words[j]; //setting the current word to the next word
+        wordChain.push(word); //adding the next word to the word chain
+        break;
+      }
+    }
+
+    if (wordChain.length === words.length) {
+      //checking if the word chain is the same length as the words
+      break;
+    }
+  }
+
+  return wordChain;
+};
 
 export { buildWordChain };

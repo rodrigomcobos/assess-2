@@ -181,15 +181,20 @@ const isBugAvailable = (bug, month) => {
 //   }
 
 const buildBugHuntCalendar = (bugs) => {
-  const calendar = {};
+  //setting a function that takes in an array of objects
+  const calendar = {}; //setting an empty object that will be used to build the calendar
   for (let month = 0; month < 12; month++) {
-    calendar[month + 1] = [];
+    //looping over the months of the year
+    calendar[month + 1] = []; //setting the value of each month to an empty array
   }
 
   bugs.forEach((bug) => {
+    //looping over the array of bugs
     bug.availability.months.forEach((month) => {
+      //looping over the months that the bug is available in
       if (!calendar[month].includes(bug.name)) {
-        calendar[month].push(bug.name);
+        //if the bug is not already in the calendar for that month
+        calendar[month].push(bug.name); //adding the bug to the calendar
       }
     });
   });
