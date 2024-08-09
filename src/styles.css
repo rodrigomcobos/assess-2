@@ -1,0 +1,34 @@
+body {
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+.character-name {
+  margin-bottom: 15px;
+}
+
+.radioBtn {
+  margin-bottom: 15px;
+}
+
+.lightsaber-color {
+  margin-bottom: 15px;
+}
+
+.submitBtn {
+  margin-bottom: 15px;
+}
+
+.table {
+  margin-top: 50px;
+  text-align: left;
+  border: 1px solid white;
+  width: fit-content;
+}
+
+.cells {
+  border: 1px solid white;
+  padding: 5px;
+}
